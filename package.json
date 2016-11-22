@@ -1,0 +1,17 @@
+{
+  "name": "reporting-site",
+  "version": "1.0.0",
+  "description": "test reporting website with nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "michiko inaba",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~4.14.0",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "multer": "~1.2.0"
+  }
+}

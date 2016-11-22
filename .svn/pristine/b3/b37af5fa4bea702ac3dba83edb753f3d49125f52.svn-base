@@ -1,0 +1,64 @@
+
+<div ng-controller="CustomersController">
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-head-line">Payments Report</h4>
+					<div class="alert alert-danger" ng-show="showErrorAlert">{{errormsg}}</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+			<br>
+			<div id="exportable">
+				<div class="row">
+					<!--    Striped Rows Table  -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Payments Info</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+
+								<table class="table table-striped">
+
+									<tr class="span3">
+									    <th>Card Type</th>
+										<th>Card Name</th>
+										<th>Number</th>
+										<th>Security Code</th>
+										<th>Exp</th>
+										
+									</tr>
+
+									<tbody ng-repeat="items in payments">
+										<tr ng-repeat="item in items" class="span3">
+											<td style="text-align: left;">{{item.type}}</td>
+											<td style="text-align: left;">{{item.name}}</td>
+											<td style="text-align: left;">{{item.number}}</td>
+											<td style="text-align: left;">{{item.securityCode}}</td>
+											<td style="text-align: left;">{{item.month}}/{{item.year}}</td>
+									
+										</tr>
+									</tbody>
+								</table>
+
+
+							</div>
+						</div>
+					</div>
+					<!--  End  Striped Rows Table  -->
+				</div>
+			</div>
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+		</div>
+	</div>
+</div>

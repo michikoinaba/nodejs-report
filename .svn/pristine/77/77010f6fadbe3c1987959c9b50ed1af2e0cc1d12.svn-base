@@ -1,0 +1,71 @@
+
+<div ng-controller="CustomersController">
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-head-line">Customers Report</h4>
+					<div class="alert alert-danger" ng-show="showErrorAlert">{{errormsg}}</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+			<br>
+			<div id="exportable">
+				<div class="row">
+					<!--    Striped Rows Table  -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Customers Info</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+
+								<table class="table table-striped">
+
+									<tr class="span3">
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>Street1</th>
+										<th>Street2</th>
+										<th>City</th>
+										<th>State</th>
+										<th>Zip</th>
+										<th>Email</th>
+										<th>Phone</th>
+									</tr>
+
+									<tbody ng-repeat="items in customers">
+										<tr ng-repeat="item in items" class="span3">
+											<td style="text-align: left;">{{item.first_name}}</td>
+											<td style="text-align: left;">{{item.last_name}}</td>
+											<td style="text-align: left;">{{item.street1}}</td>
+											<td style="text-align: left;">{{item.street2}}</td>
+											<td style="text-align: left;">{{item.city}}</td>
+											<td style="text-align: left;">{{item.state}}</td>
+											<td style="text-align: left;">{{item.zip}}</td>
+											<td style="text-align: left;">{{item.email}}</td>
+											<td style="text-align: left;">{{item.phone}}</td>
+
+										</tr>
+									</tbody>
+								</table>
+
+
+							</div>
+						</div>
+					</div>
+					<!--  End  Striped Rows Table  -->
+				</div>
+			</div>
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+		</div>
+	</div>
+</div>

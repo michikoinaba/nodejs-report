@@ -1,0 +1,24 @@
+// app/routes.js
+
+var tools = require('../config/tools');
+
+module.exports = function(app) {
+
+	// =====================================
+	// HOME PAGE  ========
+	// =====================================
+	app.get('/', function(req, res) {
+		res.render('home.html',{ title: 'Home' }); // load the home.html file
+	});
+
+	
+	// =====================================
+	// TOOL REPORT PAGE  ========
+	// =====================================
+	app.get('/tools', function(req, res) {
+		//populate tools from the tools table.
+		tools.get(res);
+		//res.render('tools.html',{ title: 'Tools' }); // load the tools.html file
+	});
+	
+}//module.exports = function(app) {

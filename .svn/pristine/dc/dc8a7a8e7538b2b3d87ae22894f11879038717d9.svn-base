@@ -1,0 +1,58 @@
+
+<div ng-controller="UsersController">
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-head-line">Users Report</h4>
+					<div class="alert alert-danger" ng-show="showErrorAlert">{{errormsg}}</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+			<br>
+			<div id="exportable">
+				<div class="row">
+					<!--    Striped Rows Table  -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Users Info</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+
+								<table class="table table-striped">
+
+									<tr class="span3">
+									    <th>Username</th>
+										<th>Password</th>
+										
+									</tr>
+
+									<tbody ng-repeat="items in users">
+										<tr ng-repeat="item in items" class="span3">
+											<td style="text-align: left;">{{item.username}}</td>
+											<td style="text-align: left;">{{item.password}}</td>
+											
+										</tr>
+									</tbody>
+								</table>
+
+
+							</div>
+						</div>
+					</div>
+					<!--  End  Striped Rows Table  -->
+				</div>
+			</div>
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+		</div>
+	</div>
+</div>

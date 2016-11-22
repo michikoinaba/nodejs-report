@@ -1,0 +1,98 @@
+
+<div ng-controller="ToolsController">
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-head-line">Tool Report</h4>
+					<div class="alert alert-danger" ng-show="showErrorAlert">{{errormsg}}</div>
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()" ng-click="showLinks=true">Download
+					Report</button>
+			</div>
+			<br>
+
+			<div id="exportable">
+				<div class="row">
+					<!--    Striped Rows Table  -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Tools</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+
+								<table class="table table-striped">
+
+									<tr class="span3">
+										<th>Type</th>
+										<th>Name</th>
+										<th>price</th>
+										<th>
+											<!-- available column has filter with yes/no -->
+											<div id="available_menu" ng-if="showMenu"  >
+												
+												<div  class="dropdown">
+	
+													<button   class="btn btn-secondary dropdown-toggle"
+														type="button" data-toggle="dropdown">
+														<b>Available</b> <span class="caret"></span>
+													</button>
+													
+													 <ul  id="links" class="dropdown-menu">
+														<li><a ng-click="hide('yes');" href="#/tools">Yes</a></li>
+														<li><a ng-click="hide('no');" href="#/tools">No</a></li>
+														<li><a ng-click="hide('all');" href="#/tools">Show
+																all</a></li>
+													</ul>
+													<!--  <menu ng-if="!showMenu"></menu> -->
+												</div>
+											</div>
+												<!--menu links from directive  -->
+												<div id="available_menu" ng-if="!showMenu">
+												<menu></menu>
+												</div>
+												 
+										</th>
+									</tr>
+
+									<tbody ng-repeat="items in tools">
+
+										<!-- if available.yes is selected, hide all available.no rows -->
+										<!--  	<tr ng-hide="( (item.available ==='0') && (nonAvailableItem ==true ) || ((item.available ==='1') && (AvailableItem==true)))"  ng-repeat="item in items" class="span3" > -->
+										<tr
+											ng-if="( (item.available ==='0') && (nonAvailableItem ==true ) || ((item.available ==='1') && (AvailableItem==true)))"
+											ng-repeat="item in items" class="span3">
+
+											<td style="text-align: left;">{{item.type}}</td>
+											<td style="text-align: left;">{{item.name}}</td>
+											<td style="text-align: left;">${{item.price}}</td>
+											<td style="text-align: left;">
+												<!--if available is 1, output Yes if not output No  --> <span
+												ng-if="item.available === '1'">Yes </span> <span
+												ng-if="item.available !== '1'">No </span>
+											</td>
+
+										</tr>
+
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+					</div>
+					<!--  End  Striped Rows Table  -->
+				</div>
+			</div>
+			<div class="row">
+
+				<button type="submit" class="btn btn-success" ng-click="download()">Download
+					Report</button>
+			</div>
+		</div>
+	</div>
+</div>

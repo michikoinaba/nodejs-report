@@ -1,0 +1,59 @@
+/* Controller: ToolsController
+ */
+angular.module('app')
+  .controller('ToolsController',
+    function ($scope, $rootScope, $http, $location ) {
+      'use strict';
+      
+      $scope.showErrorAlert=false;
+      
+      	//populate all tools from the tools table here
+		$http.get('/tools')
+			.success(function(data){
+				dumpObject(data);
+				$scope.tools = data;
+				if(data.status==0){
+				
+				  	var value='';
+				  	var data_array='';
+		        	for (var j = 0; j < data.rows.length; j++){
+		        		
+		        		Object.keys(data.rows[j]).forEach(function (key) {
+		    	    		
+		        			//trim any whitespace from the string.
+		        			//console.log('string '+"'"+data.rows[j][key]+"'");
+		    	    		value = $.trim(String(data.rows[j][key]));
+		    	    		
+		    	    		//console.log('trimmed string '+"'"+value+"'");
+		    	    		data.rows[j][key] = value;
+		    	    		
+		    	    	});
+		        		
+		        	}//for (var j = 0; j < rows.length; j++){
+		        	//dumpObject(data.rows);
+		        	$scope.tools = data
+				}//if(data.status==0){
+				
+			})
+			.error(function(){
+				 //error
+				$scope.showErrorAlert=true;
+				 $scope.errormsg = 'Error occured.';
+				 $location.url('/select');
+			});
+    });
+
+
+/**
+ * chome way to output an object
+ * 
+ * @param obj
+ */
+function dumpObject (obj) {
+    var output, property;
+    for (property in obj) {
+    	
+        output += property + ': ' + obj[property] + '; ';
+    }
+    console.log(' dumpObject '+output);
+}
